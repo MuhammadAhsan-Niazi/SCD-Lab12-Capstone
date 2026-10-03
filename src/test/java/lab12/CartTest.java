@@ -23,4 +23,24 @@ class CartTest {
     void negativePriceRejected() {
         assertThrows(IllegalArgumentException.class, () -> new Cart().addItem("SKU-1", -1.0, 1));
     }
+
+    @Test
+    void totalIsSumOfPriceTimesQuantity() {
+        Cart cart = new Cart();
+        cart.addItem("SKU-1", 5.0, 2);
+        cart.addItem("SKU-2", 3.5, 1);
+        assertEquals(13.5, cart.total(), 0.001);
+    }
+
+    @Test
+    void emptyCartTotalIsZero() {
+        assertEquals(0.0, new Cart().total(), 0.001);
+    }
+
+    @Test
+    void totalRoundsToTwoDecimals() {
+        Cart cart = new Cart();
+        cart.addItem("SKU-3", 0.333, 1);
+        assertEquals(0.33, cart.total(), 0.0001);
+    }
 }
