@@ -17,4 +17,13 @@ public class Cart {
     public List<CartItem> items() {
         return List.copyOf(items);
     }
+
+    /** Sum of unit price × quantity, rounded to 2 decimal places. Empty cart is 0.00. */
+    public double total() {
+        double sum = 0;
+        for (CartItem item : items) {
+            sum += item.unitPrice() * item.quantity();
+        }
+        return Math.round(sum * 100) / 100.0;
+    }
 }
