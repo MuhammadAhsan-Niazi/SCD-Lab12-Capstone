@@ -19,7 +19,7 @@ public class Cart {
         return List.copyOf(items);
     }
 
-    /** Sum of unit price × quantity, rounded to 2 decimal places. Empty cart is 0.00. */
+    /** Sum of unit price x quantity, rounded to 2 decimal places. Empty cart is 0.00. */
     public double total() {
         double sum = 0;
         for (CartItem item : items) {
